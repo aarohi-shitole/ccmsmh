@@ -1,0 +1,40 @@
+{
+  "name": "State",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lgdCode",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210511152433",
+  "entityTableName": "state",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

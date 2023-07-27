@@ -1,0 +1,62 @@
+{
+  "name": "Inventory",
+  "fields": [
+    {
+      "fieldName": "stock",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "capcity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "installedCapcity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "inventoryMaster",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "inventoryMaster",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "supplier",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "hospital",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20210511154033",
+  "entityTableName": "inventory",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span>Trips</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-trip" [routerLink]="['/trip/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Trip
+            </span>
+        </button>
+    </h2>
+
+    <tvg-alert-error></tvg-alert-error>
+
+    <tvg-alert></tvg-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="trips?.length === 0">
+        <span>No trips found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="trips && trips.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="trackingNo"><span>Tracking No</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="mobaId"><span>Moba Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberPlate"><span>Number Plate</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stock"><span>Stock</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span>Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span>Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span>Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModified"><span>Last Modified</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="supplierName"><span>Supplier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trip of trips ;trackBy: trackId">
+                    <td><a [routerLink]="['/trip', trip.id, 'view']">{{ trip.id }}</a></td>
+                    <td>{{ trip.trackingNo }}</td>
+                    <td>{{ trip.mobaId }}</td>
+                    <td>{{ trip.numberPlate }}</td>
+                    <td>{{ trip.stock }}</td>
+                    <td>{{ trip.status }}</td>
+                    <td>{{ trip.createdDate | date:'medium' }}</td>
+                    <td>{{ trip.createdBy }}</td>
+                    <td>{{ trip.lastModified | date:'medium' }}</td>
+                    <td>{{ trip.lastModifiedBy }}</td>
+                    <td>
+                        <div *ngIf="trip.supplierId">
+                            <a [routerLink]="['/supplier', trip.supplierId , 'view']" >{{ trip.supplierName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/trip', trip.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/trip', trip.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(trip)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="trips && trips.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

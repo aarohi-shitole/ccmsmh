@@ -1,0 +1,193 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="tvg-supplier-heading">Create or edit a Supplier</h2>
+
+            <div>
+                <tvg-alert-error></tvg-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_supplierType">Supplier Type</label>
+                    <select class="form-control" name="supplierType" formControlName="supplierType" id="field_supplierType">
+                        <option value="REFILLER">Refiller</option>
+                        <option value="MANUFACTURER">Manufacturer</option>
+                        <option value="DEALER">Dealer</option>
+                        <option value="DISTRIBUTOR">Distributor</option>
+                        <option value="INDUSTRY">Industry</option>
+                    </select>
+                    <div *ngIf="editForm.get('supplierType')!.invalid && (editForm.get('supplierType')!.dirty || editForm.get('supplierType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('supplierType')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contactNo">Contact No</label>
+                    <input type="text" class="form-control" name="contactNo" id="field_contactNo"
+                           formControlName="contactNo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_latitude">Latitude</label>
+                    <input type="text" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_longitude">Longitude</label>
+                    <input type="text" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_registrationNo">Registration No</label>
+                    <input type="text" class="form-control" name="registrationNo" id="field_registrationNo"
+                           formControlName="registrationNo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_address1">Address 1</label>
+                    <input type="text" class="form-control" name="address1" id="field_address1"
+                           formControlName="address1"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_address2">Address 2</label>
+                    <input type="text" class="form-control" name="address2" id="field_address2"
+                           formControlName="address2"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_area">Area</label>
+                    <input type="text" class="form-control" name="area" id="field_area"
+                           formControlName="area"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pinCode">Pin Code</label>
+                    <input type="text" class="form-control" name="pinCode" id="field_pinCode"
+                           formControlName="pinCode"/>
+                    <div *ngIf="editForm.get('pinCode')!.invalid && (editForm.get('pinCode')!.dirty || editForm.get('pinCode')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('pinCode')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_statusInd">Status Ind</label>
+                    <select class="form-control" name="statusInd" formControlName="statusInd" id="field_statusInd">
+                        <option value="A">Active</option>
+                        <option value="I">Inactive</option>
+                        <option value="D">Deleted</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModified">Last Modified</label>
+                    <div class="d-flex">
+                        <input id="field_lastModified" type="datetime-local" class="form-control" name="lastModified" formControlName="lastModified" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModified')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                    <div *ngIf="editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModifiedBy')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_state">State</label>
+                    <select class="form-control" id="field_state" name="state" formControlName="stateId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stateOption.id" *ngFor="let stateOption of states; trackBy: trackById">{{ stateOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_district">District</label>
+                    <select class="form-control" id="field_district" name="district" formControlName="districtId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="districtOption.id" *ngFor="let districtOption of districts; trackBy: trackById">{{ districtOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_taluka">Taluka</label>
+                    <select class="form-control" id="field_taluka" name="taluka" formControlName="talukaId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="talukaOption.id" *ngFor="let talukaOption of talukas; trackBy: trackById">{{ talukaOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_city">City</label>
+                    <select class="form-control" id="field_city" name="city" formControlName="cityId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cityOption.id" *ngFor="let cityOption of cities; trackBy: trackById">{{ cityOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_inventoryType">Inventory Type</label>
+                    <select class="form-control" id="field_inventoryType" name="inventoryType" formControlName="inventoryTypeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="inventoryTypeOption.id" *ngFor="let inventoryTypeOption of inventorytypes; trackBy: trackById">{{ inventoryTypeOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

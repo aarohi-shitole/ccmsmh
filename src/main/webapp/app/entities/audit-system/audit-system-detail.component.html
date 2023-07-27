@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="auditSystem">
+            <h2><span>Audit System</span> {{ auditSystem.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Auditor Name</span></dt>
+                <dd>
+                    <span>{{ auditSystem.auditorName }}</span>
+                </dd>
+                <dt><span>Defect Count</span></dt>
+                <dd>
+                    <span>{{ auditSystem.defectCount }}</span>
+                </dd>
+                <dt><span>Defect Fix Count</span></dt>
+                <dd>
+                    <span>{{ auditSystem.defectFixCount }}</span>
+                </dd>
+                <dt><span>Inspection Date</span></dt>
+                <dd>
+                    <span>{{ auditSystem.inspectionDate }}</span>
+                </dd>
+                <dt><span>Remark</span></dt>
+                <dd>
+                    <span>{{ auditSystem.remark }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ auditSystem.status }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ auditSystem.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ auditSystem.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Hospital</span></dt>
+                <dd>
+                    <div *ngIf="auditSystem.hospitalId">
+                        <a [routerLink]="['/hospital', auditSystem.hospitalId, 'view']">{{ auditSystem.hospitalName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Supplier</span></dt>
+                <dd>
+                    <div *ngIf="auditSystem.supplierId">
+                        <a [routerLink]="['/supplier', auditSystem.supplierId, 'view']">{{ auditSystem.supplierName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Audit Type</span></dt>
+                <dd>
+                    <div *ngIf="auditSystem.auditTypeId">
+                        <a [routerLink]="['/audit-type', auditSystem.auditTypeId, 'view']">{{ auditSystem.auditTypeName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/audit-system', auditSystem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

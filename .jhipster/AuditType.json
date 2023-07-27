@@ -1,0 +1,43 @@
+{
+  "name": "AuditType",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210825112256",
+  "entityTableName": "audit_type",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

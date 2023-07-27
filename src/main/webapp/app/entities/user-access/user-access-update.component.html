@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="tvg-user-access-heading">Create or edit a User Access</h2>
+
+            <div>
+                <tvg-alert-error></tvg-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_level">Level</label>
+                    <select class="form-control" name="level" formControlName="level" id="field_level"
+                        (ngModelChange)="onChange($event)">
+                        <option value="HOSPITAL">Hospital</option>
+                        <option value="SUPPLIER">Supplier</option>
+                        <option value="TALUKA">Taluka</option>
+                        <option value="DISTRICT">District</option>
+                        <option value="STATE">State</option>
+                        <option value="MUNCIPALCORP">MunicipalCorp</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_accessId">Access Id</label>
+                    <!-- <input type="number" class="form-control" name="accessId" id="field_accessId1"
+                        formControlName="accessId" /> -->
+                    <select class="form-control" id="field_accessId" name="accessId" formControlName="accessId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="op.id" *ngFor="let op of accessLOV; trackBy: trackById">{{ op['name'] }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModified">Last Modified</label>
+                    <div class="d-flex">
+                        <input id="field_lastModified" type="datetime-local" class="form-control" name="lastModified"
+                            formControlName="lastModified" placeholder="YYYY-MM-DD HH:mm" />
+                    </div>
+                    <div
+                        *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('lastModified')?.errors?.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                        formControlName="lastModifiedBy" />
+                    <div
+                        *ngIf="editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)">
+                        <small class="form-text text-danger" *ngIf="editForm.get('lastModifiedBy')?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_securityUser">Security User</label>
+                    <select class="form-control" id="field_securityUser" name="securityUser"
+                        formControlName="securityUserId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="securityUserOption.id"
+                            *ngFor="let securityUserOption of securityusers; trackBy: trackById">{{
+                            securityUserOption.login }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

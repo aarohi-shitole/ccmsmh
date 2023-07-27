@@ -1,0 +1,153 @@
+{
+  "name": "Hospital",
+  "fields": [
+    {
+      "fieldName": "category",
+      "fieldType": "HospitalCategory",
+      "fieldValues": "CENTRAL (CentralMinistry),GOVT (Govt),PRIVATE (Private)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subCategory",
+      "fieldType": "HospitalSubCategory",
+      "fieldValues": "FREE (Free),MPJAY (Mpjay),CHARGEABLE (Chargeable),TRUST (Trust)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "docCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "registrationNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "area",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pinCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hospitalId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "odasFacilityId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "referenceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusInd",
+      "fieldType": "StatusInd",
+      "fieldValues": "A (Active),I (Inactive),D (Deleted)"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "state",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "state",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "district",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "taluka",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "taluka",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "city",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "city",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "municipalCorp",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "municipalCorp",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hospitalType",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "hospitalType",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "hospital",
+      "relationshipName": "supplier",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210511152933",
+  "entityTableName": "hospital",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

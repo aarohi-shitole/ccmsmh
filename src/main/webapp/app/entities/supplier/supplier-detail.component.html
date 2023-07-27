@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supplier">
+            <h2><span>Supplier</span> {{ supplier.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ supplier.name }}</span>
+                </dd>
+                <dt><span>Supplier Type</span></dt>
+                <dd>
+                    <span>{{ supplier.supplierType }}</span>
+                </dd>
+                <dt><span>Contact No</span></dt>
+                <dd>
+                    <span>{{ supplier.contactNo }}</span>
+                </dd>
+                <dt><span>Latitude</span></dt>
+                <dd>
+                    <span>{{ supplier.latitude }}</span>
+                </dd>
+                <dt><span>Longitude</span></dt>
+                <dd>
+                    <span>{{ supplier.longitude }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ supplier.email }}</span>
+                </dd>
+                <dt><span>Registration No</span></dt>
+                <dd>
+                    <span>{{ supplier.registrationNo }}</span>
+                </dd>
+                <dt><span>Address 1</span></dt>
+                <dd>
+                    <span>{{ supplier.address1 }}</span>
+                </dd>
+                <dt><span>Address 2</span></dt>
+                <dd>
+                    <span>{{ supplier.address2 }}</span>
+                </dd>
+                <dt><span>Area</span></dt>
+                <dd>
+                    <span>{{ supplier.area }}</span>
+                </dd>
+                <dt><span>Pin Code</span></dt>
+                <dd>
+                    <span>{{ supplier.pinCode }}</span>
+                </dd>
+                <dt><span>Status Ind</span></dt>
+                <dd>
+                    <span>{{ supplier.statusInd }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ supplier.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ supplier.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <div *ngIf="supplier.stateId">
+                        <a [routerLink]="['/state', supplier.stateId, 'view']">{{ supplier.stateName }}</a>
+                    </div>
+                </dd>
+                <dt><span>District</span></dt>
+                <dd>
+                    <div *ngIf="supplier.districtId">
+                        <a [routerLink]="['/district', supplier.districtId, 'view']">{{ supplier.districtName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Taluka</span></dt>
+                <dd>
+                    <div *ngIf="supplier.talukaId">
+                        <a [routerLink]="['/taluka', supplier.talukaId, 'view']">{{ supplier.talukaName }}</a>
+                    </div>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <div *ngIf="supplier.cityId">
+                        <a [routerLink]="['/city', supplier.cityId, 'view']">{{ supplier.cityName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Inventory Type</span></dt>
+                <dd>
+                    <div *ngIf="supplier.inventoryTypeId">
+                        <a [routerLink]="['/inventory-type', supplier.inventoryTypeId, 'view']">{{ supplier.inventoryTypeName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supplier', supplier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

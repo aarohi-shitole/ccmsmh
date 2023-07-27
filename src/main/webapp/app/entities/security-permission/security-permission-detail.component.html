@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="securityPermission">
+            <h2><span>Security Permission</span> {{ securityPermission.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ securityPermission.name }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ securityPermission.description }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ securityPermission.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ securityPermission.lastModifiedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/security-permission', securityPermission.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

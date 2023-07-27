@@ -1,0 +1,165 @@
+<div>
+    <h2 id="page-heading">
+        <span>Patient Infos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-patient-info" [routerLink]="['/patient-info/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Patient Info
+            </span>
+        </button>
+    </h2>
+
+    <tvg-alert-error></tvg-alert-error>
+
+    <tvg-alert></tvg-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="patientInfos?.length === 0">
+        <span>No patientInfos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="patientInfos && patientInfos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="icmrId"><span>Icmr Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="srfId"><span>Srf Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="labName"><span>Lab Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="patientID"><span>Patient ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="patientName"><span>Patient Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="age"><span>Age</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ageIn"><span>Age In</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span>Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nationality"><span>Nationality</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="address"><span>Address</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="villageTown"><span>Village Town</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pincode"><span>Pincode</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="patientCategory"><span>Patient Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOfSampleCollection"><span>Date Of Sample Collection</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOfSampleReceived"><span>Date Of Sample Received</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sampleType"><span>Sample Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sampleId"><span>Sample Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="underlyingMedicalCondition"><span>Underlying Medical Condition</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalized"><span>Hospitalized</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalName"><span>Hospital Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalizationDate"><span>Hospitalization Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalState"><span>Hospital State</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalDistrict"><span>Hospital District</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="symptomsStatus"><span>Symptoms Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="symptoms"><span>Symptoms</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="testingKitUsed"><span>Testing Kit Used</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="eGeneNGene"><span>E Gene N Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ctValueOfEGeneNGene"><span>Ct Value Of E Gene N Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rdRpSGene"><span>Rd Rp S Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ctValueOfRdRpSGene"><span>Ct Value Of Rd Rp S Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="oRF1aORF1bNN2Gene"><span>O RF 1 A ORF 1 B NN 2 Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ctValueOfORF1aORF1bNN2Gene"><span>Ct Value Of ORF 1 A ORF 1 B NN 2 Gene</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="repeatSample"><span>Repeat Sample</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOfSampleTested"><span>Date Of Sample Tested</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="entryDate"><span>Entry Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="confirmationDate"><span>Confirmation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="finalResultSample"><span>Final Result Sample</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="remarks"><span>Remarks</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="editedOn"><span>Edited On</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ccmsPullDate"><span>Ccms Pull Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModified"><span>Last Modified</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stateName"><span>State</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="districtName"><span>District</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let patientInfo of patientInfos ;trackBy: trackId">
+                    <td><a [routerLink]="['/patient-info', patientInfo.id, 'view']">{{ patientInfo.id }}</a></td>
+                    <td>{{ patientInfo.icmrId }}</td>
+                    <td>{{ patientInfo.srfId }}</td>
+                    <td>{{ patientInfo.labName }}</td>
+                    <td>{{ patientInfo.patientID }}</td>
+                    <td>{{ patientInfo.patientName }}</td>
+                    <td>{{ patientInfo.age }}</td>
+                    <td>{{ patientInfo.ageIn }}</td>
+                    <td>{{ patientInfo.gender }}</td>
+                    <td>{{ patientInfo.nationality }}</td>
+                    <td>{{ patientInfo.address }}</td>
+                    <td>{{ patientInfo.villageTown }}</td>
+                    <td>{{ patientInfo.pincode }}</td>
+                    <td>{{ patientInfo.patientCategory }}</td>
+                    <td>{{ patientInfo.dateOfSampleCollection | date:'medium' }}</td>
+                    <td>{{ patientInfo.dateOfSampleReceived | date:'medium' }}</td>
+                    <td>{{ patientInfo.sampleType }}</td>
+                    <td>{{ patientInfo.sampleId }}</td>
+                    <td>{{ patientInfo.underlyingMedicalCondition }}</td>
+                    <td>{{ patientInfo.hospitalized }}</td>
+                    <td>{{ patientInfo.hospitalName }}</td>
+                    <td>{{ patientInfo.hospitalizationDate | date:'medium' }}</td>
+                    <td>{{ patientInfo.hospitalState }}</td>
+                    <td>{{ patientInfo.hospitalDistrict }}</td>
+                    <td>{{ patientInfo.symptomsStatus }}</td>
+                    <td>{{ patientInfo.symptoms }}</td>
+                    <td>{{ patientInfo.testingKitUsed }}</td>
+                    <td>{{ patientInfo.eGeneNGene }}</td>
+                    <td>{{ patientInfo.ctValueOfEGeneNGene }}</td>
+                    <td>{{ patientInfo.rdRpSGene }}</td>
+                    <td>{{ patientInfo.ctValueOfRdRpSGene }}</td>
+                    <td>{{ patientInfo.oRF1aORF1bNN2Gene }}</td>
+                    <td>{{ patientInfo.ctValueOfORF1aORF1bNN2Gene }}</td>
+                    <td>{{ patientInfo.repeatSample }}</td>
+                    <td>{{ patientInfo.dateOfSampleTested | date:'medium' }}</td>
+                    <td>{{ patientInfo.entryDate | date:'medium' }}</td>
+                    <td>{{ patientInfo.confirmationDate | date:'medium' }}</td>
+                    <td>{{ patientInfo.finalResultSample }}</td>
+                    <td>{{ patientInfo.remarks }}</td>
+                    <td>{{ patientInfo.editedOn | date:'medium' }}</td>
+                    <td>{{ patientInfo.ccmsPullDate | date:'medium' }}</td>
+                    <td>{{ patientInfo.lastModified | date:'medium' }}</td>
+                    <td>{{ patientInfo.lastModifiedBy }}</td>
+                    <td>
+                        <div *ngIf="patientInfo.stateId">
+                            <a [routerLink]="['/state', patientInfo.stateId , 'view']" >{{ patientInfo.stateName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="patientInfo.districtId">
+                            <a [routerLink]="['/district', patientInfo.districtId , 'view']" >{{ patientInfo.districtName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/patient-info', patientInfo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/patient-info', patientInfo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(patientInfo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="patientInfos && patientInfos.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

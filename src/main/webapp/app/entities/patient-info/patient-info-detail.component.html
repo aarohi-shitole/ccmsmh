@@ -1,0 +1,206 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="patientInfo">
+            <h2><span>Patient Info</span> {{ patientInfo.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Icmr Id</span></dt>
+                <dd>
+                    <span>{{ patientInfo.icmrId }}</span>
+                </dd>
+                <dt><span>Srf Id</span></dt>
+                <dd>
+                    <span>{{ patientInfo.srfId }}</span>
+                </dd>
+                <dt><span>Lab Name</span></dt>
+                <dd>
+                    <span>{{ patientInfo.labName }}</span>
+                </dd>
+                <dt><span>Patient ID</span></dt>
+                <dd>
+                    <span>{{ patientInfo.patientID }}</span>
+                </dd>
+                <dt><span>Patient Name</span></dt>
+                <dd>
+                    <span>{{ patientInfo.patientName }}</span>
+                </dd>
+                <dt><span>Age</span></dt>
+                <dd>
+                    <span>{{ patientInfo.age }}</span>
+                </dd>
+                <dt><span>Age In</span></dt>
+                <dd>
+                    <span>{{ patientInfo.ageIn }}</span>
+                </dd>
+                <dt><span>Gender</span></dt>
+                <dd>
+                    <span>{{ patientInfo.gender }}</span>
+                </dd>
+                <dt><span>Nationality</span></dt>
+                <dd>
+                    <span>{{ patientInfo.nationality }}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{ patientInfo.address }}</span>
+                </dd>
+                <dt><span>Village Town</span></dt>
+                <dd>
+                    <span>{{ patientInfo.villageTown }}</span>
+                </dd>
+                <dt><span>Pincode</span></dt>
+                <dd>
+                    <span>{{ patientInfo.pincode }}</span>
+                </dd>
+                <dt><span>Patient Category</span></dt>
+                <dd>
+                    <span>{{ patientInfo.patientCategory }}</span>
+                </dd>
+                <dt><span>Date Of Sample Collection</span></dt>
+                <dd>
+                    <span>{{ patientInfo.dateOfSampleCollection }}</span>
+                </dd>
+                <dt><span>Date Of Sample Received</span></dt>
+                <dd>
+                    <span>{{ patientInfo.dateOfSampleReceived }}</span>
+                </dd>
+                <dt><span>Sample Type</span></dt>
+                <dd>
+                    <span>{{ patientInfo.sampleType }}</span>
+                </dd>
+                <dt><span>Sample Id</span></dt>
+                <dd>
+                    <span>{{ patientInfo.sampleId }}</span>
+                </dd>
+                <dt><span>Underlying Medical Condition</span></dt>
+                <dd>
+                    <span>{{ patientInfo.underlyingMedicalCondition }}</span>
+                </dd>
+                <dt><span>Hospitalized</span></dt>
+                <dd>
+                    <span>{{ patientInfo.hospitalized }}</span>
+                </dd>
+                <dt><span>Hospital Name</span></dt>
+                <dd>
+                    <span>{{ patientInfo.hospitalName }}</span>
+                </dd>
+                <dt><span>Hospitalization Date</span></dt>
+                <dd>
+                    <span>{{ patientInfo.hospitalizationDate }}</span>
+                </dd>
+                <dt><span>Hospital State</span></dt>
+                <dd>
+                    <span>{{ patientInfo.hospitalState }}</span>
+                </dd>
+                <dt><span>Hospital District</span></dt>
+                <dd>
+                    <span>{{ patientInfo.hospitalDistrict }}</span>
+                </dd>
+                <dt><span>Symptoms Status</span></dt>
+                <dd>
+                    <span>{{ patientInfo.symptomsStatus }}</span>
+                </dd>
+                <dt><span>Symptoms</span></dt>
+                <dd>
+                    <span>{{ patientInfo.symptoms }}</span>
+                </dd>
+                <dt><span>Testing Kit Used</span></dt>
+                <dd>
+                    <span>{{ patientInfo.testingKitUsed }}</span>
+                </dd>
+                <dt><span>E Gene N Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.eGeneNGene }}</span>
+                </dd>
+                <dt><span>Ct Value Of E Gene N Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.ctValueOfEGeneNGene }}</span>
+                </dd>
+                <dt><span>Rd Rp S Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.rdRpSGene }}</span>
+                </dd>
+                <dt><span>Ct Value Of Rd Rp S Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.ctValueOfRdRpSGene }}</span>
+                </dd>
+                <dt><span>O RF 1 A ORF 1 B NN 2 Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.oRF1aORF1bNN2Gene }}</span>
+                </dd>
+                <dt><span>Ct Value Of ORF 1 A ORF 1 B NN 2 Gene</span></dt>
+                <dd>
+                    <span>{{ patientInfo.ctValueOfORF1aORF1bNN2Gene }}</span>
+                </dd>
+                <dt><span>Repeat Sample</span></dt>
+                <dd>
+                    <span>{{ patientInfo.repeatSample }}</span>
+                </dd>
+                <dt><span>Date Of Sample Tested</span></dt>
+                <dd>
+                    <span>{{ patientInfo.dateOfSampleTested }}</span>
+                </dd>
+                <dt><span>Entry Date</span></dt>
+                <dd>
+                    <span>{{ patientInfo.entryDate }}</span>
+                </dd>
+                <dt><span>Confirmation Date</span></dt>
+                <dd>
+                    <span>{{ patientInfo.confirmationDate }}</span>
+                </dd>
+                <dt><span>Final Result Sample</span></dt>
+                <dd>
+                    <span>{{ patientInfo.finalResultSample }}</span>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <span>{{ patientInfo.remarks }}</span>
+                </dd>
+                <dt><span>Edited On</span></dt>
+                <dd>
+                    <span>{{ patientInfo.editedOn }}</span>
+                </dd>
+                <dt><span>Ccms Pull Date</span></dt>
+                <dd>
+                    <span>{{ patientInfo.ccmsPullDate }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ patientInfo.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ patientInfo.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>State</span></dt>
+                <dd>
+                    <div *ngIf="patientInfo.stateId">
+                        <a [routerLink]="['/state', patientInfo.stateId, 'view']">{{ patientInfo.stateName }}</a>
+                    </div>
+                </dd>
+                <dt><span>District</span></dt>
+                <dd>
+                    <div *ngIf="patientInfo.districtId">
+                        <a [routerLink]="['/district', patientInfo.districtId, 'view']">{{ patientInfo.districtName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/patient-info', patientInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

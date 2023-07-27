@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bedType">
+            <h2><span>Bed Type</span> {{ bedType.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ bedType.name }}</span>
+                </dd>
+                <dt><span>Per Day OX</span></dt>
+                <dd>
+                    <span>{{ bedType.perDayOX }}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{ bedType.deleted }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ bedType.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ bedType.lastModifiedBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bed-type', bedType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

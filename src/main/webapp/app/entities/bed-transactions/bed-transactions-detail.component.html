@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bedTransactions">
+            <h2><span>Bed Transactions</span> {{ bedTransactions.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Occupied</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.occupied }}</span>
+                </dd>
+                <dt><span>On Cylinder</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.onCylinder }}</span>
+                </dd>
+                <dt><span>On LMO</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.onLMO }}</span>
+                </dd>
+                <dt><span>On Concentrators</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.onConcentrators }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ bedTransactions.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Bed Type</span></dt>
+                <dd>
+                    <div *ngIf="bedTransactions.bedTypeId">
+                        <a [routerLink]="['/bed-type', bedTransactions.bedTypeId, 'view']">{{ bedTransactions.bedTypeName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Hospital</span></dt>
+                <dd>
+                    <div *ngIf="bedTransactions.hospitalId">
+                        <a [routerLink]="['/hospital', bedTransactions.hospitalId, 'view']">{{ bedTransactions.hospitalName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bed-transactions', bedTransactions.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

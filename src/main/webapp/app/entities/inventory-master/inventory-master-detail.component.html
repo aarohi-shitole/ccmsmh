@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inventoryMaster">
+            <h2><span>Inventory Master</span> {{ inventoryMaster.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.name }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.description }}</span>
+                </dd>
+                <dt><span>Volume</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.volume }}</span>
+                </dd>
+                <dt><span>Unit</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.unit }}</span>
+                </dd>
+                <dt><span>Calulate Volume</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.calulateVolume }}</span>
+                </dd>
+                <dt><span>Dimensions</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.dimensions }}</span>
+                </dd>
+                <dt><span>Sub Type Ind</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.subTypeInd }}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.deleted }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ inventoryMaster.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Inventory Type</span></dt>
+                <dd>
+                    <div *ngIf="inventoryMaster.inventoryTypeId">
+                        <a [routerLink]="['/inventory-type', inventoryMaster.inventoryTypeId, 'view']">{{ inventoryMaster.inventoryTypeName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inventory-master', inventoryMaster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

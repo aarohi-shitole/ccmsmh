@@ -1,0 +1,59 @@
+{
+  "name": "BedTransactions",
+  "fields": [
+    {
+      "fieldName": "occupied",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "onCylinder",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "onLMO",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "onConcentrators",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "bedType",
+      "otherEntityRelationshipName": "bedTransactions",
+      "relationshipName": "bedType",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "bedTransactions",
+      "relationshipName": "hospital",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20210526211443",
+  "entityTableName": "bed_transactions",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

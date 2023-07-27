@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inventory">
+            <h2><span>Inventory</span> {{ inventory.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Stock</span></dt>
+                <dd>
+                    <span>{{ inventory.stock }}</span>
+                </dd>
+                <dt><span>Capcity</span></dt>
+                <dd>
+                    <span>{{ inventory.capcity }}</span>
+                </dd>
+                <dt><span>Installed Capcity</span></dt>
+                <dd>
+                    <span>{{ inventory.installedCapcity }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ inventory.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ inventory.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Inventory Master</span></dt>
+                <dd>
+                    <div *ngIf="inventory.inventoryMasterId">
+                        <a [routerLink]="['/inventory-master', inventory.inventoryMasterId, 'view']">{{ inventory.inventoryMasterName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Supplier</span></dt>
+                <dd>
+                    <div *ngIf="inventory.supplierId">
+                        <a [routerLink]="['/supplier', inventory.supplierId, 'view']">{{ inventory.supplierName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Hospital</span></dt>
+                <dd>
+                    <div *ngIf="inventory.hospitalId">
+                        <a [routerLink]="['/hospital', inventory.hospitalId, 'view']">{{ inventory.hospitalName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inventory', inventory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+{
+  "name": "Supplier",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "supplierType",
+      "fieldType": "SupplierType",
+      "fieldValues": "REFILLER (Refiller),MANUFACTURER (Manufacturer),DEALER (Dealer),DISTRIBUTOR (Distributor),INDUSTRY (Industry)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registrationNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "area",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pinCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "statusInd",
+      "fieldType": "StatusInd",
+      "fieldValues": "A (Active),I (Inactive),D (Deleted)"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "state",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "state",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "district",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "taluka",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "taluka",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "city",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "city",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "inventoryType",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "inventoryType",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "supplier",
+      "relationshipName": "hospital",
+      "otherEntityField": "name",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210511153933",
+  "entityTableName": "supplier",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,108 @@
+{
+  "name": "SecurityUser",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "designation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "passwordHash",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activated",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "langKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activationKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resetKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resetDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "mobileNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "oneTimePassword",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "otpExpiryTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "securityPermission",
+      "otherEntityRelationshipName": "securityUser",
+      "relationshipName": "securityPermission",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "securityRole",
+      "otherEntityRelationshipName": "securityUser",
+      "relationshipName": "securityRole",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210511153433",
+  "entityTableName": "security_user",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

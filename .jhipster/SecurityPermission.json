@@ -1,0 +1,53 @@
+{
+  "name": "SecurityPermission",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "securityRole",
+      "otherEntityRelationshipName": "securityPermission",
+      "relationshipName": "securityRole",
+      "otherEntityField": "name",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "securityUser",
+      "otherEntityRelationshipName": "securityPermission",
+      "relationshipName": "securityUser",
+      "otherEntityField": "login",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210511153633",
+  "entityTableName": "security_permission",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

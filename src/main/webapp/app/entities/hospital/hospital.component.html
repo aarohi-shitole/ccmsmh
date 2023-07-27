@@ -1,0 +1,143 @@
+<div>
+    <h2 id="page-heading">
+        <span>Hospitals</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-hospital" [routerLink]="['/hospital/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Hospital
+            </span>
+        </button>
+    </h2>
+
+    <tvg-alert-error></tvg-alert-error>
+
+    <tvg-alert></tvg-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="hospitals?.length === 0">
+        <span>No hospitals found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="hospitals && hospitals.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="category"><span>Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="subCategory"><span>Sub Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contactNo"><span>Contact No</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="latitude"><span>Latitude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="longitude"><span>Longitude</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="docCount"><span>Doc Count</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="registrationNo"><span>Registration No</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="address1"><span>Address 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="address2"><span>Address 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="area"><span>Area</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pinCode"><span>Pin Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalId"><span>Hospital Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="odasFacilityId"><span>Odas Facility Id</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="referenceNumber"><span>Reference Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="statusInd"><span>Status Ind</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModified"><span>Last Modified</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stateName"><span>State</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="districtName"><span>District</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="talukaName"><span>Taluka</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cityName"><span>City</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="municipalCorpName"><span>Municipal Corp</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="hospitalTypeName"><span>Hospital Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hospital of hospitals ;trackBy: trackId">
+                    <td><a [routerLink]="['/hospital', hospital.id, 'view']">{{ hospital.id }}</a></td>
+                    <td>{{ hospital.category }}</td>
+                    <td>{{ hospital.subCategory }}</td>
+                    <td>{{ hospital.contactNo }}</td>
+                    <td>{{ hospital.latitude }}</td>
+                    <td>{{ hospital.longitude }}</td>
+                    <td>{{ hospital.docCount }}</td>
+                    <td>{{ hospital.email }}</td>
+                    <td>{{ hospital.name }}</td>
+                    <td>{{ hospital.registrationNo }}</td>
+                    <td>{{ hospital.address1 }}</td>
+                    <td>{{ hospital.address2 }}</td>
+                    <td>{{ hospital.area }}</td>
+                    <td>{{ hospital.pinCode }}</td>
+                    <td>{{ hospital.hospitalId }}</td>
+                    <td>{{ hospital.odasFacilityId }}</td>
+                    <td>{{ hospital.referenceNumber }}</td>
+                    <td>{{ hospital.statusInd }}</td>
+                    <td>{{ hospital.lastModified | date:'medium' }}</td>
+                    <td>{{ hospital.lastModifiedBy }}</td>
+                    <td>
+                        <div *ngIf="hospital.stateId">
+                            <a [routerLink]="['/state', hospital.stateId , 'view']" >{{ hospital.stateName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="hospital.districtId">
+                            <a [routerLink]="['/district', hospital.districtId , 'view']" >{{ hospital.districtName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="hospital.talukaId">
+                            <a [routerLink]="['/taluka', hospital.talukaId , 'view']" >{{ hospital.talukaName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="hospital.cityId">
+                            <a [routerLink]="['/city', hospital.cityId , 'view']" >{{ hospital.cityName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="hospital.municipalCorpId">
+                            <a [routerLink]="['/municipal-corp', hospital.municipalCorpId , 'view']" >{{ hospital.municipalCorpName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="hospital.hospitalTypeId">
+                            <a [routerLink]="['/hospital-type', hospital.hospitalTypeId , 'view']" >{{ hospital.hospitalTypeName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/hospital', hospital.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/hospital', hospital.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(hospital)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="hospitals && hospitals.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="trip">
+            <h2><span>Trip</span> {{ trip.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tracking No</span></dt>
+                <dd>
+                    <span>{{ trip.trackingNo }}</span>
+                </dd>
+                <dt><span>Moba Id</span></dt>
+                <dd>
+                    <span>{{ trip.mobaId }}</span>
+                </dd>
+                <dt><span>Number Plate</span></dt>
+                <dd>
+                    <span>{{ trip.numberPlate }}</span>
+                </dd>
+                <dt><span>Stock</span></dt>
+                <dd>
+                    <span>{{ trip.stock }}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{ trip.status }}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{ trip.createdDate }}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{ trip.createdBy }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ trip.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ trip.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Supplier</span></dt>
+                <dd>
+                    <div *ngIf="trip.supplierId">
+                        <a [routerLink]="['/supplier', trip.supplierId, 'view']">{{ trip.supplierName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/trip', trip.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

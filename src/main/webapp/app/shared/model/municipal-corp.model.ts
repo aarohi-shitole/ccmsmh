@@ -1,0 +1,25 @@
+import { Moment } from 'moment';
+
+export interface IMunicipalCorp {
+  id?: number;
+  name?: string;
+  deleted?: boolean;
+  lastModified?: Moment;
+  lastModifiedBy?: string;
+  districtName?: string;
+  districtId?: number;
+}
+
+export class MunicipalCorp implements IMunicipalCorp {
+  constructor(
+    public id?: number,
+    public name?: string,
+    public deleted?: boolean,
+    public lastModified?: Moment,
+    public lastModifiedBy?: string,
+    public districtName?: string,
+    public districtId?: number
+  ) {
+    this.deleted = this.deleted || false;
+  }
+}

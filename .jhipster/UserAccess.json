@@ -1,0 +1,44 @@
+{
+  "name": "UserAccess",
+  "fields": [
+    {
+      "fieldName": "level",
+      "fieldType": "AccessLevel",
+      "fieldValues": "HOSPITAL (Hospital),SUPPLIER (Supplier),TALUKA (Taluka),DISTRICT (District),STATE (State),MUNCIPALCORP (MunicipalCorp)"
+    },
+    {
+      "fieldName": "accessId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "securityUser",
+      "otherEntityRelationshipName": "userAccess",
+      "relationshipName": "securityUser",
+      "otherEntityField": "login"
+    }
+  ],
+  "changelogDate": "20210511153333",
+  "entityTableName": "user_access",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

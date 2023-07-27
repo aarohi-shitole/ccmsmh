@@ -1,0 +1,75 @@
+{
+  "name": "Trip",
+  "fields": [
+    {
+      "fieldName": "trackingNo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mobaId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberPlate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stock",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "TransactionStatus",
+      "fieldValues": "OPEN (Open),TRANSIT (Transit),CANCELLED (Cancelled),RECEIVED (Received)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tripDetails",
+      "otherEntityRelationshipName": "trip",
+      "relationshipName": "tripDetails"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "trip",
+      "relationshipName": "supplier",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20210702222055",
+  "entityTableName": "trip",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

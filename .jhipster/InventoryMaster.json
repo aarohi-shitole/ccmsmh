@@ -1,0 +1,69 @@
+{
+  "name": "InventoryMaster",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "volume",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "calulateVolume",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dimensions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subTypeInd",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "deleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "inventoryType",
+      "otherEntityRelationshipName": "inventoryMaster",
+      "relationshipName": "inventoryType",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20210511153833",
+  "entityTableName": "inventory_master",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

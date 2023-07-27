@@ -1,0 +1,181 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="tvg-security-user-heading">Create or edit a Security User</h2>
+
+            <div>
+                <tvg-alert-error></tvg-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                           formControlName="firstName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                           formControlName="lastName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_designation">Designation</label>
+                    <input type="text" class="form-control" name="designation" id="field_designation"
+                           formControlName="designation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_login">Login</label>
+                    <input type="text" class="form-control" name="login" id="field_login"
+                           formControlName="login"/>
+                    <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('login')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_passwordHash">Password Hash</label>
+                    <input type="text" class="form-control" name="passwordHash" id="field_passwordHash"
+                           formControlName="passwordHash"/>
+                    <div *ngIf="editForm.get('passwordHash')!.invalid && (editForm.get('passwordHash')!.dirty || editForm.get('passwordHash')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('passwordHash')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imageUrl">Image Url</label>
+                    <input type="text" class="form-control" name="imageUrl" id="field_imageUrl"
+                           formControlName="imageUrl"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activated">Activated</label>
+                    <input type="checkbox" class="form-control" name="activated" id="field_activated"
+                           formControlName="activated"/>
+                    <div *ngIf="editForm.get('activated')!.invalid && (editForm.get('activated')!.dirty || editForm.get('activated')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('activated')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_langKey">Lang Key</label>
+                    <input type="text" class="form-control" name="langKey" id="field_langKey"
+                           formControlName="langKey"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activationKey">Activation Key</label>
+                    <input type="text" class="form-control" name="activationKey" id="field_activationKey"
+                           formControlName="activationKey"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_resetKey">Reset Key</label>
+                    <input type="text" class="form-control" name="resetKey" id="field_resetKey"
+                           formControlName="resetKey"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_resetDate">Reset Date</label>
+                    <div class="d-flex">
+                        <input id="field_resetDate" type="datetime-local" class="form-control" name="resetDate" formControlName="resetDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mobileNo">Mobile No</label>
+                    <input type="text" class="form-control" name="mobileNo" id="field_mobileNo"
+                           formControlName="mobileNo"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_oneTimePassword">One Time Password</label>
+                    <input type="text" class="form-control" name="oneTimePassword" id="field_oneTimePassword"
+                           formControlName="oneTimePassword"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_otpExpiryTime">Otp Expiry Time</label>
+                    <div class="d-flex">
+                        <input id="field_otpExpiryTime" type="datetime-local" class="form-control" name="otpExpiryTime" formControlName="otpExpiryTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModified">Last Modified</label>
+                    <div class="d-flex">
+                        <input id="field_lastModified" type="datetime-local" class="form-control" name="lastModified" formControlName="lastModified" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModified')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('lastModified')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                    <div *ngIf="editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModifiedBy')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_securityPermissions">Security Permission</label>
+                    <select class="form-control" id="field_securityPermissions" multiple name="securityPermissions" formControlName="securityPermissions">
+                        <option [ngValue]="getSelected(editForm.get('securityPermissions')!.value, securityPermissionOption)" *ngFor="let securityPermissionOption of securitypermissions; trackBy: trackById">{{ securityPermissionOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_securityRoles">Security Role</label>
+                    <select class="form-control" id="field_securityRoles" multiple name="securityRoles" formControlName="securityRoles">
+                        <option [ngValue]="getSelected(editForm.get('securityRoles')!.value, securityRoleOption)" *ngFor="let securityRoleOption of securityroles; trackBy: trackById">{{ securityRoleOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

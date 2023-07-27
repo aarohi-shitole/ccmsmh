@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity SecurityRole.
+    -->
+    <changeSet id="20210511153533-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="security_role_id"
+                                 baseTableName="security_role_security_permission"
+                                 constraintName="fk_security_role_security_permission_security_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="security_role"/>
+
+        <addForeignKeyConstraint baseColumnNames="security_permission_id"
+                                 baseTableName="security_role_security_permission"
+                                 constraintName="fk_security_role_security_permission_security_permission_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="security_permission"/>
+        
+    </changeSet>
+</databaseChangeLog>

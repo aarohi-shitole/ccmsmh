@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity InventoryUsed.
+    -->
+    <changeSet id="20210511154133-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="inventory_id"
+                                 baseTableName="inventory_used"
+                                 constraintName="fk_inventory_used_inventory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="inventory"/>
+
+    </changeSet>
+</databaseChangeLog>

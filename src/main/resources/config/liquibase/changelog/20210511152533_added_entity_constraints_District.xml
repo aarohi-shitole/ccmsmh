@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity District.
+    -->
+    <changeSet id="20210511152533-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="state_id"
+                                 baseTableName="district"
+                                 constraintName="fk_district_state_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state"/>
+
+        <addForeignKeyConstraint baseColumnNames="division_id"
+                                 baseTableName="district"
+                                 constraintName="fk_district_division_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="division"/>
+
+    </changeSet>
+</databaseChangeLog>

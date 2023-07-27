@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="tvg-trip-details-heading">Create or edit a Trip Details</h2>
+
+            <div>
+                <tvg-alert-error></tvg-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stockSent">Stock Sent</label>
+                    <input type="number" class="form-control" name="stockSent" id="field_stockSent"
+                           formControlName="stockSent"/>
+                    <div *ngIf="editForm.get('stockSent')!.invalid && (editForm.get('stockSent')!.dirty || editForm.get('stockSent')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stockSent')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('stockSent')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stockRec">Stock Rec</label>
+                    <input type="number" class="form-control" name="stockRec" id="field_stockRec"
+                           formControlName="stockRec"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="OPEN">Open</option>
+                        <option value="TRANSIT">Transit</option>
+                        <option value="CANCELLED">Cancelled</option>
+                        <option value="RECEIVED">Received</option>
+                    </select>
+                    <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('status')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('createdDate')!.invalid && (editForm.get('createdDate')!.dirty || editForm.get('createdDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('createdDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('createdDate')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                    <div *ngIf="editForm.get('createdBy')!.invalid && (editForm.get('createdBy')!.dirty || editForm.get('createdBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('createdBy')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModified">Last Modified</label>
+                    <div class="d-flex">
+                        <input id="field_lastModified" type="datetime-local" class="form-control" name="lastModified" formControlName="lastModified" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_supplier">Supplier</label>
+                    <select class="form-control" id="field_supplier" name="supplier" formControlName="supplierId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="supplierOption.id" *ngFor="let supplierOption of suppliers; trackBy: trackById">{{ supplierOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hospital">Hospital</label>
+                    <select class="form-control" id="field_hospital" name="hospital" formControlName="hospitalId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="hospitalOption.id" *ngFor="let hospitalOption of hospitals; trackBy: trackById">{{ hospitalOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transactions">Transactions</label>
+                    <select class="form-control" id="field_transactions" name="transactions" formControlName="transactionsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="transactionsOption.id" *ngFor="let transactionsOption of transactions; trackBy: trackById">{{ transactionsOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_trip">Trip</label>
+                    <select class="form-control" id="field_trip" name="trip" formControlName="tripId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tripOption.id" *ngFor="let tripOption of trips; trackBy: trackById">{{ tripOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{
+  "name": "Transactions",
+  "fields": [
+    {
+      "fieldName": "stockReq",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stockProvided",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "TransactionStatus",
+      "fieldValues": "OPEN (Open),TRANSIT (Transit),CANCELLED (Cancelled),RECEIVED (Received)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "supplier",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "inventory",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "inventory",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210511154233",
+  "entityTableName": "transactions",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

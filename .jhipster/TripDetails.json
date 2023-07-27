@@ -1,0 +1,79 @@
+{
+  "name": "TripDetails",
+  "fields": [
+    {
+      "fieldName": "stockSent",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stockRec",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "TransactionStatus",
+      "fieldValues": "OPEN (Open),TRANSIT (Transit),CANCELLED (Cancelled),RECEIVED (Received)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "supplier",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "hospital",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "transactions",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "transactions",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "trip",
+      "otherEntityRelationshipName": "tripDetails",
+      "relationshipName": "trip",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210702222155",
+  "entityTableName": "trip_details",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

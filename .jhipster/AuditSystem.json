@@ -1,0 +1,75 @@
+{
+  "name": "AuditSystem",
+  "fields": [
+    {
+      "fieldName": "auditorName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "defectCount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "defectFixCount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "inspectionDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "auditSystem",
+      "relationshipName": "hospital",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "auditSystem",
+      "relationshipName": "supplier",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "auditType",
+      "otherEntityRelationshipName": "auditSystem",
+      "relationshipName": "auditType",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20210825112356",
+  "entityTableName": "audit_system",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

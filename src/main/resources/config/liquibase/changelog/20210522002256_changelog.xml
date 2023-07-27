@@ -1,0 +1,100 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="VIKAS (generated)" id="1621643045062-16">
+        <createTable tableName="division">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="divisionPK"/>
+            </column>
+            <column name="deleted" type="BIT"/>
+            <column name="last_modified" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-17">
+        <createTable tableName="hospital_supplier">
+            <column name="hospital_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-18">
+        <addColumn tableName="district">
+            <column name="division_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-19">
+        <addColumn tableName="supplier">
+            <column name="inventory_type_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-20">
+        <addUniqueConstraint columnNames="name" constraintName="UC_DIVISIONNAME_COL" tableName="division"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-21">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="hospital_supplier" constraintName="FK4cvw081a8bqhmpsypj5so1hha" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="supplier" validate="true"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-22">
+        <addForeignKeyConstraint baseColumnNames="hospital_id" baseTableName="hospital_supplier" constraintName="FK51n54ieblxmkvgls0x28757jy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="hospital" validate="true"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-23">
+        <addForeignKeyConstraint baseColumnNames="inventory_type_id" baseTableName="supplier" constraintName="FK5suat64546o1jd0nw2vsqnv4y" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="inventory_type" validate="true"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-24">
+        <addForeignKeyConstraint baseColumnNames="division_id" baseTableName="district" constraintName="FK78g8m793eebrogjuuey668ihu" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="division" validate="true"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-1">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="bed_inventory"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-2">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="bed_type"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-3">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="city"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-4">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="district"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-5">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="hospital"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-6">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="hospital_type"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-7">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="inventory"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-8">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="inventory_master"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-9">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="inventory_type"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-10">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="inventory_used"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-11">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="municipal_corp"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-12">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="state"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-13">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="taluka"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-14">
+        <addDefaultValue columnDataType="boolean" columnName="deleted" defaultValueBoolean="false" tableName="transactions"/>
+    </changeSet>
+    <changeSet author="VIKAS (generated)" id="1621643045062-15">
+        <dropNotNullConstraint columnDataType="double precision" columnName="volume" tableName="inventory_master"/>
+    </changeSet>
+</databaseChangeLog>

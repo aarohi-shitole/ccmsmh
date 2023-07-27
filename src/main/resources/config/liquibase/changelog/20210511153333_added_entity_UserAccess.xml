@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <property name="autoIncrement" value="true"/>
+
+    <!--
+        Added the entity UserAccess.
+    -->
+    <changeSet id="20210511153333-1" author="jhipster">
+        <createTable tableName="user_access">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="level" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="access_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="security_user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="user_access" columnName="last_modified" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20210511153333-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+</databaseChangeLog>

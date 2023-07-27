@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity TripDetails.
+    -->
+    <changeSet id="20210702222155-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="trip_details"
+                                 constraintName="fk_trip_details_supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+
+        <addForeignKeyConstraint baseColumnNames="hospital_id"
+                                 baseTableName="trip_details"
+                                 constraintName="fk_trip_details_hospital_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hospital"/>
+
+        <addForeignKeyConstraint baseColumnNames="transactions_id"
+                                 baseTableName="trip_details"
+                                 constraintName="fk_trip_details_transactions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transactions"/>
+
+        <addForeignKeyConstraint baseColumnNames="trip_id"
+                                 baseTableName="trip_details"
+                                 constraintName="fk_trip_details_trip_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="trip"/>
+
+    </changeSet>
+</databaseChangeLog>

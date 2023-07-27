@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inventoryUsed">
+            <h2><span>Inventory Used</span> {{ inventoryUsed.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Stock</span></dt>
+                <dd>
+                    <span>{{ inventoryUsed.stock }}</span>
+                </dd>
+                <dt><span>Capcity</span></dt>
+                <dd>
+                    <span>{{ inventoryUsed.capcity }}</span>
+                </dd>
+                <dt><span>Comment</span></dt>
+                <dd>
+                    <span>{{ inventoryUsed.comment }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ inventoryUsed.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ inventoryUsed.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Inventory</span></dt>
+                <dd>
+                    <div *ngIf="inventoryUsed.inventoryId">
+                        <a [routerLink]="['/inventory', inventoryUsed.inventoryId, 'view']">{{ inventoryUsed.inventoryId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inventory-used', inventoryUsed.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

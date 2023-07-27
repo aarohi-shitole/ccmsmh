@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="securityRole">
+            <h2><span>Security Role</span> {{ securityRole.id }}</h2>
+
+            <hr>
+
+            <tvg-alert-error></tvg-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ securityRole.name }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ securityRole.description }}</span>
+                </dd>
+                <dt><span>Last Modified</span></dt>
+                <dd>
+                    <span>{{ securityRole.lastModified }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ securityRole.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Security Permission</span></dt>
+                <dd>
+                    <span *ngFor="let securityPermission of securityRole.securityPermissions; let last = last">
+                        <a [routerLink]="['/security-permission', securityPermission?.id, 'view']">{{ securityPermission.name }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/security-role', securityRole.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
